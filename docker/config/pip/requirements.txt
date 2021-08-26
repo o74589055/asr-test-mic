@@ -1,0 +1,5 @@
+# setuptools==56.0.0
+numpy==1.19.0
+# matplotlib
+SpeechRecognition
+PyAudio==0.2.10
