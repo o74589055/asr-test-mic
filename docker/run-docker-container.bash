@@ -3,7 +3,7 @@
 DOCKER_IMAGE_NAME=asr-mic
 DOCKER_CONTAINER_NAME=asr-mic
 
-WORKSPACE_PATH=$HOME/workspace/liu_ws/asr_ws
+WORKSPACE_PATH=$HOME/workspace/liu_ws/asr-test-mic
 
 # run docker
   docker run --rm \
