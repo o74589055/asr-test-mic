@@ -1,13 +1,16 @@
 import time, logging
 from datetime import datetime
 import threading, collections, queue, os, os.path
-import deepspeech
 import numpy as np
 import pyaudio
-import wave
+import wave 
 import webrtcvad
 from halo import Halo
 from scipy import signal
+
+import argparse
+import tensorflow as tf
+from tensorflow_asr.featurizers.speech_featurizers import read_raw_audio
 
 logging.basicConfig(level=20)
 
@@ -151,17 +154,19 @@ class VADAudio(Audio):
 
 def main(ARGS):
     # Load DeepSpeech model
-    if os.path.isdir(ARGS.model):
-        model_dir = ARGS.model
-        ARGS.model = os.path.join(model_dir, 'output_graph.pb')
-        ARGS.scorer = os.path.join(model_dir, ARGS.scorer)
+    # if os.path.isdir(ARGS.model):
+    #     model_dir = ARGS.model
+    #     ARGS.model = os.path.join(model_dir, 'output_graph.pb')
+    #     ARGS.scorer = os.path.join(model_dir, ARGS.scorer)
 
-    print('Initializing model...')
-    logging.info("ARGS.model: %s", ARGS.model)
-    model = deepspeech.Model(ARGS.model)
-    if ARGS.scorer:
-        logging.info("ARGS.scorer: %s", ARGS.scorer)
-        model.enableExternalScorer(ARGS.scorer)
+    # print('Initializing model...')
+    # logging.info("ARGS.model: %s", ARGS.model)
+    # model = deepspeech.Model(ARGS.model)
+    # if ARGS.scorer:
+    #     logging.info("ARGS.scorer: %s", ARGS.scorer)
+    #     model.enableExternalScorer(ARGS.scorer)
+    
+    tflitemodel = tf.lite.Interpreter(model_path=ARGS.tflite)
 
     # Start audio with VAD
     vad_audio = VADAudio(aggressiveness=ARGS.vad_aggressiveness,
@@ -170,13 +175,14 @@ def main(ARGS):
                          file=ARGS.file)
     print("Listening (ctrl-C to exit)...")
     frames = vad_audio.vad_collector()
-
+    
     # Stream from microphone to DeepSpeech using VAD
     spinner = None
     if not ARGS.nospinner:
         spinner = Halo(spinner='line')
     # stream_context = model.createStream()
     wav_data = bytearray()
+
     for frame in frames:
         if frame is not None:
             if spinner: spinner.start()
@@ -187,10 +193,27 @@ def main(ARGS):
             if spinner: spinner.stop()
             logging.debug("end utterence")
             if ARGS.savewav:
-                vad_audio.write_wav(os.path.join(ARGS.savewav, datetime.now().strftime("savewav_%Y-%m-%d_%H-%M-%S_%f.wav")), wav_data)
-                wav_data = bytearray()
+                vad_audio.write_wav(os.path.join(ARGS.savewav, "test.wav"), wav_data)
+                wav_data = bytearray() 
+            signal = read_raw_audio("test.wav")
+            input_details = tflitemodel.get_input_details()
+            output_details = tflitemodel.get_output_details()
+            tflitemodel.resize_tensor_input(input_details[0]["index"], signal.shape)
+            tflitemodel.allocate_tensors()
+            tflitemodel.set_tensor(input_details[0]["index"], signal)
+            tflitemodel.set_tensor(
+                input_details[1]["index"],
+                tf.constant(0, dtype=tf.int32)
+            )
+            tflitemodel.set_tensor(
+                input_details[2]["index"],
+                tf.zeros([1, 2, 1, 320], dtype=tf.float32)
+            )
+            tflitemodel.invoke()
+            hyp = tflitemodel.get_tensor(output_details[0]["index"])
+            print("".join([chr(u) for u in hyp]))
             # text = stream_context.finishStream()
-            print("Recognized: %s" % text)
+            # print("Recognized: %s" % text)
             # stream_context = model.createStream()
 
 if __name__ == '__main__':
@@ -205,11 +228,13 @@ if __name__ == '__main__':
                         help="Disable spinner")
     parser.add_argument('-w', '--savewav',
                         help="Save .wav files of utterences to given directory")
+
     parser.add_argument('-f', '--file',
                         help="Read from .wav file instead of microphone")
-
-    parser.add_argument('-m', '--model', required=True,
-                        help="Path to the model (protocol buffer binary file, or entire directory containing all standard-named files for model)")
+    parser.add_argument("--tflite", type=str, default=None,
+                        help="Path to conformer tflite")
+    # parser.add_argument('-m', '--model', required=True,
+    #                     help="Path to the model (protocol buffer binary file, or entire directory containing all standard-named files for model)")
     parser.add_argument('-s', '--scorer',
                         help="Path to the external scorer file.")
     parser.add_argument('-d', '--device', type=int, default=None,

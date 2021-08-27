@@ -42,7 +42,7 @@ args = parser.parse_args()
 tflitemodel = tf.lite.Interpreter(model_path=args.tflite)
 
 signal = read_raw_audio(args.filename)
-
+# print(tf.__version__)
 input_details = tflitemodel.get_input_details()
 output_details = tflitemodel.get_output_details()
 tflitemodel.resize_tensor_input(input_details[0]["index"], signal.shape)
