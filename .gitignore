@@ -12,6 +12,7 @@ __pycache__
 .pytest*
 venv
 my_train
-*.v2
+tensorboard/**
+states/**
 core
 
