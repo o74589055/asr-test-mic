@@ -12,6 +12,6 @@ __pycache__
 .pytest*
 venv
 my_train
-tensorboard/**
+*.v2
 core
 
