@@ -44,6 +44,7 @@ for text_file in tqdm(text_files, desc="[Loading]"):
         lines = txt.read().splitlines()
     for line in lines:
         line = line.split(" ", maxsplit=1)
+        print(line)
         audio_file = os.path.join(current_dir, line[0] + ".flac")
         y, sr = librosa.load(audio_file, sr=None)
         duration = librosa.get_duration(y, sr)

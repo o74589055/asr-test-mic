@@ -7,6 +7,10 @@ ARG GROUP=initial
 ARG UID=1000
 ARG GID=${UID}
 ARG SHELL=/bin/bash
+
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES graphics,utility,compute
+
 # Setup users and groups
 RUN groupadd --gid ${GID} ${GROUP} \
   && useradd --gid ${GID} --uid ${UID} -ms ${SHELL} ${USER} \
@@ -58,12 +62,13 @@ RUN bash ./script/bash_setup.bash \
   && rm -rf /home/${USER}/.tmp
 
 # Install rnnt_loss
-# ARG install_rnnt_loss=true
-# ARG using_gpu=true
-# RUN if [ "$install_rnnt_loss" = "true" ] ; \
-#     then if [ "$using_gpu" = "true" ] ; then export CUDA_HOME=/usr/local/cuda ; else echo 'Using CPU' ; fi \
-#     && bash ./script/install_rnnt_loss.sh \
-#     else echo 'Using pure TensorFlow'; fi
+COPY ./scripts /scripts
+ARG install_rnnt_loss=true
+ARG using_gpu=true
+RUN if [ "$install_rnnt_loss" = "true" ] ; \
+    then if [ "$using_gpu" = "true" ] ; then export CUDA_HOME=/usr/local/cuda ; else echo 'Using CPU' ; fi \
+    && bash /scripts/install_rnnt_loss.sh \
+    else echo 'Using pure TensorFlow'; fi
 
 RUN echo "export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" >> /root/.bashrc
 
@@ -85,5 +90,5 @@ EXPOSE 22
 # Switch to user's HOME folder
 WORKDIR /home/${USER}/work
 
-ENTRYPOINT ["/entrypoint.bash","byobu"]
+ENTRYPOINT ["/entrypoint.bash","bash"]
 # ENTRYPOINT ["byobu"]

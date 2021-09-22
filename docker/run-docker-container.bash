@@ -3,17 +3,19 @@
 DOCKER_IMAGE_NAME=asr-mic
 DOCKER_CONTAINER_NAME=asr-mic
 
-WORKSPACE_PATH=$HOME/workspace/liu_ws/asr-test-mic
+WORKSPACE_PATH=$HOME/workspace/asr-test-mic
 
 # run docker
   docker run --rm \
     --device /dev/snd:/dev/snd \
     --net=host \
     --ipc=host \
+    --gpus all \
     --privileged \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     -v $HOME/.Xauthority:$docker/.Xauthority \
     -v ${WORKSPACE_PATH}:$HOME/work \
+    -v /media/liu/D:$HOME/work/datasets \
     -v /dev:/dev \
     -v /etc/timezone:/etc/timezone:ro \
     -v /etc/localtime:/etc/localtime:ro \

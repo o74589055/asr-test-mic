@@ -21,6 +21,7 @@ logger = env_util.setup_environment()
 import tensorflow as tf
 
 DEFAULT_YAML = os.path.join(os.path.abspath(os.path.dirname(__file__)), "config.yml")
+print (DEFAULT_YAML)
 
 tf.keras.backend.clear_session()
 
@@ -69,9 +70,11 @@ if args.sentence_piece:
 elif args.subwords:
     logger.info("Loading subwords ...")
     text_featurizer = text_featurizers.SubwordFeaturizer(config.decoder_config)
+
 else:
     logger.info("Use characters ...")
     text_featurizer = text_featurizers.CharFeaturizer(config.decoder_config)
+
 
 if args.tfrecords:
     train_dataset = asr_dataset.ASRTFRecordDataset(
@@ -112,7 +115,6 @@ global_batch_size *= strategy.num_replicas_in_sync
 
 train_data_loader = train_dataset.create(global_batch_size)
 eval_data_loader = eval_dataset.create(global_batch_size)
-
 with strategy.scope():
     # build model
     conformer = Conformer(**config.model_config, vocabulary_size=text_featurizer.num_classes)
@@ -153,3 +155,5 @@ conformer.fit(
     steps_per_epoch=train_dataset.total_steps,
     validation_steps=eval_dataset.total_steps if eval_data_loader else None
 )
+
+
