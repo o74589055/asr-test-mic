@@ -15,7 +15,7 @@ WORKSPACE_PATH=$HOME/workspace/asr-test-mic
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     -v $HOME/.Xauthority:$docker/.Xauthority \
     -v ${WORKSPACE_PATH}:$HOME/work \
-    -v /media/liu/D:$HOME/work/datasets \
+    -v /media/liu/D:$HOME/datasets \
     -v /dev:/dev \
     -v /etc/timezone:/etc/timezone:ro \
     -v /etc/localtime:/etc/localtime:ro \

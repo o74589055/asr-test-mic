@@ -93,10 +93,8 @@ class BaseModel(tf.keras.Model):
         """
         Args:
             batch ([tf.Tensor]): a batch of training data
-
         Returns:
             Dict[tf.Tensor]: a dict of validation metrics with keys are the name of metric
-
         """
         inputs, y_true = batch
         with tf.GradientTape() as tape:
@@ -117,10 +115,8 @@ class BaseModel(tf.keras.Model):
         """
         Args:
             batch ([tf.Tensor]: a batch of validation data
-
         Returns:
             Dict[tf.Tensor]: a dict of validation metrics with keys are the name of metric prefixed with "val_"
-
         """
         inputs, y_true = batch
         y_pred = self(inputs, training=False)
@@ -132,7 +128,6 @@ class BaseModel(tf.keras.Model):
         """
         Args:
             batch ([tf.Tensor]): a batch of testing data
-
         Returns:
             [tf.Tensor]: stacked tensor of shape [B, 3] with each row is the text [truth, greedy, beam_search]
         """
@@ -154,3 +149,4 @@ class BaseModel(tf.keras.Model):
     def recognize_beam(self, *args, **kwargs):
         """Beam search decoding function that used in self.predict_step"""
         raise NotImplementedError()
+        

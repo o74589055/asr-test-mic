@@ -24,14 +24,14 @@ speech_config:
   normalize_per_frame: False
 
 decoder_config:
-  vocabulary: ./pre_model/conformer.subwords
-  target_vocab_size: 1000
+  vocabulary: /home/liu/work/TensorFlowASR/vocabularies/english.characters
+  target_vocab_size: 1024
   max_subword_length: 10
   blank_at_zero: True
   beam_width: 4
   norm_score: True
   corpus_files:
-    - /home/liu/work/datasets/LibriSpeech/train-clean-100/transcripts.tsv
+    - /home/liu/datasets/wave_dataset/train/transcripts.tsv
 
 model_config:
   name: conformer
@@ -75,8 +75,8 @@ learning_config:
           num_masks: 1
           mask_factor: 27
     data_paths:
-      - /home/liu/work/datasets/LibriSpeech/train-clean-100/transcripts.tsv
-    tfrecords_dir: /home/liu/work/datasets/LibriSpeech/tfrecords_1030
+      - /home/liu/datasets/wave_dataset/train/transcripts.tsv
+    tfrecords_dir: /home/liu/datasets/wave_dataset/tfrecords_1030
     shuffle: True
     cache: True
     buffer_size: 100
@@ -86,9 +86,7 @@ learning_config:
   eval_dataset_config:
     use_tf: True
     data_paths:
-      - /home/liu/work/datasets/LibriSpeech/dev-other/transcripts.tsv
-      - /home/liu/work/datasets/LibriSpeech/dev-clean/transcripts.tsv
-    tfrecords_dir: /home/liu/work/datasets/LibriSpeech/tfrecords_1030
+    tfrecords_dir: /home/liu/datasets/LibriSpeech/tfrecords_1031
     shuffle: False
     cache: True
     buffer_size: 100
@@ -98,9 +96,9 @@ learning_config:
   test_dataset_config:
     use_tf: True
     data_paths:
-      - /home/liu/work/datasets/LibriSpeech/test-clean/transcripts.tsv
-    tfrecords_dir: /home/liu/work/datasets/LibriSpeech/tfrecords_1030
-    shuffle: False
+      - /home/liu/datasets/wave_dataset/test/transcripts.tsv
+    tfrecords_dir: /home/liu/datasets/LibriSpeech/tfrecords_1032
+    shuffle: True
     cache: True
     buffer_size: 100
     drop_remainder: True
@@ -114,7 +112,7 @@ learning_config:
 
   running_config:
     batch_size: 1
-    num_epochs: 50
+    num_epochs: 100
     checkpoint:
       filepath: /home/liu/work/TensorFlowASR/examples/conformer/checkpoints/{epoch:02d}.h5
       save_best_only: True

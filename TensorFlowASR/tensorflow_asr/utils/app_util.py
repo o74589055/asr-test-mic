@@ -25,7 +25,7 @@ logger = tf.get_logger()
 def evaluate_results(
     filepath: str,
 ):
-    logger.info(f"Evaluating result from {filepath} ...")
+    # logger.info(f"Evaluating result from {filepath} ...")
     metrics = {
         "greedy_wer": ErrorRate(wer, name="greedy_wer", dtype=tf.float32),
         "greedy_cer": ErrorRate(cer, name="greedy_cer", dtype=tf.float32),

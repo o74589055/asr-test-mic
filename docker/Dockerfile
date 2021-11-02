@@ -70,7 +70,7 @@ RUN if [ "$install_rnnt_loss" = "true" ] ; \
     && bash /scripts/install_rnnt_loss.sh \
     else echo 'Using pure TensorFlow'; fi
 
-RUN echo "export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" >> /root/.bashrc
+RUN echo "export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" >> /home/${USER}/.bashrc
 
 
 # copy entrypoint

@@ -1,0 +1,57 @@
+PATH	DURATION	GROUNDTRUTH	GREEDY	BEAMSEARCH
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/shoot/shoot6.flac	3.0	shoot	shoot	shoot
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/left/left6.flac	3.0	shoot	shoot	shoot
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/shoot/shoot4.flac	3.0	turn around	turn around 	turn around 
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/turn_around/around9.flac	3.0	turn right	ton right 	ton right 
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/turn_around/around5.flac	3.0	turn right	turn rack	turn rack
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/left/left2.flac	3.0	going	going	going
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/turn_around/around.flac	3.0	turn around	turn around	turn around
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/shoot/shoot10.flac	3.0	shoot	shoot	shoot
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/left/left1.flac	3.0	going	going	going
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/right/right3.flac	3.0	turn left	tun left 	tun left 
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/shoot/shoot9.flac	3.0	turn around	turn around	turn around
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/right/right5.flac	3.0	turn right	turn right	turn right
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/left/left3.flac	3.0	turn around	till aroma	till aroma
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/left/left.flac	3.0	turn right	turn right 	turn right 
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/left/left10.flac	3.0	going	going	going
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/going/going6.flac	3.0	going	going	going
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/shoot/shoot1.flac	3.0	shoot	shoot	shoot
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/right/right8.flac	3.0	going	going	going
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/shoot/shoot7.flac	3.0	shoot	shoot	shoot
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/shoot/shoot2.flac	3.0	turn left	tun left	tun left
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/going/going5.flac	3.0	turn right	turn right 	turn right 
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/right/right7.flac	3.0	shoot	shoot	shoot
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/going/going0.flac	3.0	going	going	going
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/left/left5.flac	3.0	going	goi	goi
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/turn_around/around7.flac	3.0	turn left	tune left 	tune left 
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/shoot/shoot8.flac	3.0	turn left	turn left	turn left
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/going/going1.flac	3.0	going	going	going
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/turn_around/around0.flac	3.0	going	going	going
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/shoot/shoot.flac	3.0	turn right	turn right	turn right
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/shoot/shoot3.flac	3.0	going	going	going
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/going/going4.flac	3.0	turn left	turn left	turn left
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/left/left7.flac	3.0	turn right	turn right	turn right
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/right/right6.flac	3.0	turn right	turn right 	turn right 
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/turn_around/around8.flac	3.0	turn left	turn left	turn left
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/right/right.flac	3.0	turn around	tur around 	tue around 
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/turn_around/around2.flac	3.0	turn around	tur a run	tur a run
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/turn_around/around4.flac	3.0	shoot	shoot	shoot
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/right/right4.flac	3.0	going	goi	goi
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/shoot/shoot5.flac	3.0	turn around	turn around	turn around
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/right/right9.flac	3.0	turn right	turn right	turn right
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/left/left8.flac	3.0	turn around	dut arond 	dut arose 
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/going/going7.flac	3.0	turn around	to arom	to arom
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/going/going9.flac	3.0	turn around	turn around	turn around
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/left/left4.flac	3.0	shoot	shoot	shoot
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/going/going10.flac	3.0	turn left	turn neck 	turn neck 
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/going/going3.flac	3.0	turn around	turn around	turn around
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/going/going8.flac	3.0	shoot	shoot	shoot
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/left/left9.flac	3.0	turn around	tell arom	tell arom
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/going/going.flac	3.0	turn left	tun neath 	tun neath 
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/turn_around/around10.flac	3.0	turn left	turn neth	turn neth
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/going/going2.flac	3.0	turn right	dur right 	dur right 
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/turn_around/around1.flac	3.0	shoot	youth	youth
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/right/right1.flac	3.0	turn left	turn left 	turn left 
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/right/right2.flac	3.0	shoot	shoot	shoot
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/right/right10.flac	3.0	turn left	turn left 	turn left 
+/home/liu/datasets/LibriSpeech/train-clean-100/wave_dataset/turn_around/around6.flac	3.0	turn right	turn rache	turn rache
